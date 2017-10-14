@@ -11,13 +11,12 @@ var firstAndPike = {
   avgCookieSoldPerHour: 6.3,
   randCustByHour: [],
   cookiesSoldByHour: [],
-  totalCookies: 0,
+  totalCookies: [],
 //method for random customers by hour
   calcRandCustByHour: function() {
     for(var i = 0; i < hours.length; i++) {
       this.randCustByHour.push(Math.floor(Math.random() * (this.maxCustPerHour - this.minCustPerHour + 1)) + this.minCustPerHour);
       console.log(this.randCustByHour[i]);
-
     }
   },
 //method for cookies sold by hours
@@ -27,12 +26,22 @@ var firstAndPike = {
       console.log(this.cookiesSoldByHour[j]);
     }
   },
+//metohd for Calculating Total
+  calcTotalCookies: function() {
+    var sum = 0;
+    for(var l = 0; l < hours.length; l++) {
+      sum += (this.randCustByHour[l] + this.cookiesSoldByHour[l]);
+    }
+    this.totalCookies.push(sum);
+    console.log('Total: ' + sum);
+  },
   render: function() {
     var firstandpikeul = document.getElementById('firstandpikeul');
     var firstandpikeh3 = document.getElementById('firstandpikeh3');
     //calling the methods in the object literal
     this.calcRandCustByHour();
     this.calcCookiesSoldByHour();
+    this.calcTotalCookies();
     //DOM manipulation irl!!!
     //create a vairable to abe able to append an item to our list
     //create a new h3 element
@@ -48,6 +57,9 @@ var firstAndPike = {
       console.log(liEl);
       firstandpikeul.appendChild(liEl);
     }
+    var total = document.createElement('li');
+    total.textContent = 'Total: ' + this.totalCookies[0] + ' Cookies.';
+    firstandpikeul.appendChild(total);
   }
 };
 
