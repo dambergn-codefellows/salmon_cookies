@@ -325,7 +325,6 @@ function showHide1() {
     x.style.display = "none";
   }
 }
-
 function showHide2() {
   var x = document.getElementById("seatacairmap");
   if (x.style.display === "none") {

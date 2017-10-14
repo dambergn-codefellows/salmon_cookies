@@ -1,27 +1,35 @@
 @font-face {
-  font-family: 'tengwar_cursive';
-  src: url('tengwar_cursive.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+  font-family: 'miltown';
+  src: url('miltown.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
 }
 
 *{
-  font-family: 'Lobster', tengwar_cursive, sans-serif;
+  font-family: 'Lobster', miltown, sans-serif;
+  background-color: lightblue;
 }
 
 p{
     font-family: tengwar_cursive;
     font-size: 42px;
 }
+#wrapperHeader{
+    position: relative;
+    background-image:url(img/salmon.png);
+}
 
-header{
-  width: 500px;
-  border: 10px;
-  padding: 50px;
-  margin: 0 auto;
+#header{
+    background:url(img/salmon.png) no-repeat;
+    width:100%;
+}
+
+button{
+  background-color: salmon;
 }
 
 h1{
   color: salmon;
-  font-family: 'tengwar_cursive', 'Lobster', sans-serif;
+  font-family: 'Lobster', sans-serif, 'miltown';
+  float: center;
 }
 
 #hideframe{display: none;}
