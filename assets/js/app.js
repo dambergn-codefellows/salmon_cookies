@@ -72,7 +72,7 @@ var seaTacAirport = {
   avgCookieSoldPerHour: 1.2,
   randCustByHour: [],
   cookiesSoldByHour: [],
-  totalCookies: 0,
+  totalCookies: [],
 //method for random customers by hour
   calcRandCustByHour: function() {
     for(var i = 0; i < hours.length; i++) {
@@ -88,12 +88,22 @@ var seaTacAirport = {
       console.log(this.cookiesSoldByHour[j]);
     }
   },
+  //metohd for Calculating Total
+  calcTotalCookies: function() {
+    var sum = 0;
+    for(var l = 0; l < hours.length; l++) {
+      sum += (this.randCustByHour[l] + this.cookiesSoldByHour[l]);
+    }
+    this.totalCookies.push(sum);
+    console.log('Total: ' + sum);
+  },
   render: function() {
-    var seatacairportel = document.getElementById('seatacairportel');
+    var seatacairportul = document.getElementById('seatacairportul');
     var seatacairporth3 = document.getElementById('seatacairporth3');
     //calling the methods in the object literal
     this.calcRandCustByHour();
     this.calcCookiesSoldByHour();
+    this.calcTotalCookies();
     //DOM manipulation irl!!!
     //create a vairable to abe able to append an item to our list
     //create a new h3 element
@@ -107,8 +117,11 @@ var seaTacAirport = {
       //creating li elemnts with text of the hours
       liEl.textContent = hours[k] + ': ' + this.cookiesSoldByHour[k] + ' cookies';
       console.log(liEl);
-      seatacairporth3.appendChild(liEl);
+      seatacairportul.appendChild(liEl);
     }
+    var total = document.createElement('li');
+    total.textContent = 'Total: ' + this.totalCookies[0] + ' Cookies.';
+    seatacairportul.appendChild(total);
   }
 };
 
@@ -121,7 +134,7 @@ var seattleCenter = {
   avgCookieSoldPerHour: 3.7,
   randCustByHour: [],
   cookiesSoldByHour: [],
-  totalCookies: 0,
+  totalCookies: [],
 //method for random customers by hour
   calcRandCustByHour: function() {
     for(var i = 0; i < hours.length; i++) {
@@ -137,12 +150,22 @@ var seattleCenter = {
       console.log(this.cookiesSoldByHour[j]);
     }
   },
+  //metohd for Calculating Total
+  calcTotalCookies: function() {
+    var sum = 0;
+    for(var l = 0; l < hours.length; l++) {
+      sum += (this.randCustByHour[l] + this.cookiesSoldByHour[l]);
+    }
+    this.totalCookies.push(sum);
+    console.log('Total: ' + sum);
+  },
   render: function() {
     var seattlecenterul = document.getElementById('seattlecenterul');
     var seattlecenterh3 = document.getElementById('seattlecenterh3');
     //calling the methods in the object literal
     this.calcRandCustByHour();
     this.calcCookiesSoldByHour();
+    this.calcTotalCookies();
     //DOM manipulation irl!!!
     //create a vairable to abe able to append an item to our list
     //create a new h3 element
@@ -158,6 +181,9 @@ var seattleCenter = {
       console.log(liEl);
       seattlecenterul.appendChild(liEl);
     }
+    var total = document.createElement('li');
+    total.textContent = 'Total: ' + this.totalCookies[0] + ' Cookies.';
+    seattlecenterul.appendChild(total);
   }
 };
 
@@ -170,7 +196,7 @@ var capitolHill = {
   avgCookieSoldPerHour: 2.3,
   randCustByHour: [],
   cookiesSoldByHour: [],
-  totalCookies: 0,
+  totalCookies: [],
 //method for random customers by hour
   calcRandCustByHour: function() {
     for(var i = 0; i < hours.length; i++) {
@@ -186,12 +212,22 @@ var capitolHill = {
       console.log(this.cookiesSoldByHour[j]);
     }
   },
+  //metohd for Calculating Total
+  calcTotalCookies: function() {
+    var sum = 0;
+    for(var l = 0; l < hours.length; l++) {
+      sum += (this.randCustByHour[l] + this.cookiesSoldByHour[l]);
+    }
+    this.totalCookies.push(sum);
+    console.log('Total: ' + sum);
+  },
   render: function() {
     var capitolhillul = document.getElementById('capitolhillul');
     var capitolhillh3 = document.getElementById('capitolhillh3');
     //calling the methods in the object literal
     this.calcRandCustByHour();
     this.calcCookiesSoldByHour();
+    this.calcTotalCookies();
     //DOM manipulation irl!!!
     //create a vairable to abe able to append an item to our list
     //create a new h3 element
@@ -207,6 +243,9 @@ var capitolHill = {
       console.log(liEl);
       capitolhillul.appendChild(liEl);
     }
+    var total = document.createElement('li');
+    total.textContent = 'Total: ' + this.totalCookies[0] + ' Cookies.';
+    capitolhillul.appendChild(total);
   }
 };
 
@@ -219,7 +258,7 @@ var alki = {
   avgCookieSoldPerHour: 4.6,
   randCustByHour: [],
   cookiesSoldByHour: [],
-  totalCookies: 0,
+  totalCookies: [],
 //method for random customers by hour
   calcRandCustByHour: function() {
     for(var i = 0; i < hours.length; i++) {
@@ -235,12 +274,22 @@ var alki = {
       console.log(this.cookiesSoldByHour[j]);
     }
   },
+  //metohd for Calculating Total
+  calcTotalCookies: function() {
+    var sum = 0;
+    for(var l = 0; l < hours.length; l++) {
+      sum += (this.randCustByHour[l] + this.cookiesSoldByHour[l]);
+    }
+    this.totalCookies.push(sum);
+    console.log('Total: ' + sum);
+  },
   render: function() {
     var alkiul = document.getElementById('alkiul');
     var alkih3 = document.getElementById('alkih3');
     //calling the methods in the object literal
     this.calcRandCustByHour();
     this.calcCookiesSoldByHour();
+    this.calcTotalCookies();
     //DOM manipulation irl!!!
     //create a vairable to abe able to append an item to our list
     //create a new h3 element
@@ -256,6 +305,9 @@ var alki = {
       console.log(liEl);
       alkiul.appendChild(liEl);
     }
+    var total = document.createElement('li');
+    total.textContent = 'Total: ' + this.totalCookies[0] + ' Cookies.';
+    alkiul.appendChild(total);
   }
 };
 
@@ -264,3 +316,45 @@ seaTacAirport.render();
 seattleCenter.render();
 capitolHill.render();
 alki.render();
+
+function showHide1() {
+  var x = document.getElementById("firstandpikemap");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+function showHide2() {
+  var x = document.getElementById("seatacairmap");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+function showHide3() {
+  var x = document.getElementById("seatcentmap");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+function showHide4() {
+  var x = document.getElementById("caphilmap");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+function showHide5() {
+  var x = document.getElementById("alkimap");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
