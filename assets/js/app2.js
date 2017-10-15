@@ -4,14 +4,14 @@
 //prototypes are the functionality that the machine adds to the objects
 
 //we need to define our hours and store them
-var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
+var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm',];
 
 //we need to create a place for our list of all locations to be placed when we create them.
 var allLocations = [];
 //console.log(allLocations);
 //we need to define a varaiable that will be dynamic depending on how many cookies
-var totalCookiesByHour = 0;
-
+var totalCookiesByHour = [];
+var totalCookiesByLocation = [];
 //total of total cookies
 var netTotal = 0;
 
@@ -31,8 +31,11 @@ function MakeLocation(name, minCustPerHour, maxCustPerHour, avgCookieSoldPerHour
   this.randCustByHour = [];
   //console.log(this.randCustByHour);
   this.cookiesSoldByHour = [];
-  this.totalCookies = [];
-  //console.log(this.totalCookies);
+  console.log(this.cookiesSoldByHour);
+  this.totalCookiesByLocation = [];
+  console.log(this.totalCookiesByLocation);
+  this.totalCookiesByHour = [];
+  console.log(this.totalCookiesByHour);
   allLocations.push(this.name);
   for(var i = 0; i < hours.length; i++) {
     this.randCustByHour.push(Math.floor(Math.random() * (this.maxCustPerHour - this.minCustPerHour + 1)) + this.minCustPerHour);
@@ -44,14 +47,18 @@ function MakeLocation(name, minCustPerHour, maxCustPerHour, avgCookieSoldPerHour
     //console.log(this.cookiesSoldByHour[j]);
   }
 //metohd for Calculating Total
-  var sum = 0;
+  var sumByLocation = 0;
     for(var l = 0; l < hours.length; l++) {
-      sum += (this.randCustByHour[l] + this.cookiesSoldByHour[l]);
+      sumByLocation += (this.randCustByHour[l] + this.cookiesSoldByHour[l]);
     }
-    this.totalCookies.push(sum);
+    this.totalCookiesByLocation.push(sumByLocation);
     //console.log('Total: ' + sum);
-
-  }
+  var sumByHour = 0;
+    for(var m = 0; l < allLocations.length; m++) {
+      sumByHour += (this.randCustByHour[m] + this.cookiesSoldByHour[m]);
+    }
+    this.totalCookiesByHour.push(sumByHour);
+}
 
 
 function makeHeaderRow(){
@@ -65,6 +72,7 @@ function makeHeaderRow(){
     thEl.textContent = hours[i];
     trEl.appendChild(thEl);
   }
+  //trEl.textContent = 'Total';
   cookiestands.appendChild(trEl);
 }
 makeHeaderRow();
@@ -138,3 +146,17 @@ function makeAlkiRows() {
   cookiestands.appendChild(trEl);
 }
 makeAlkiRows();
+
+function makeTotalsRows() {
+  var cookiestands = document.getElementById('cookiestands');
+  var trEl = document.createElement('tr'); //creates table div.
+  //console.log('Before trEl', trEl);
+  trEl.textContent = 'Total';
+  for(var i = 0; i < allLocations.length; i++){
+    var tdEl = document.createElement('td'); //creates top table row.
+    tdEl.textContent = alkiData.cookiesSoldByHour[i];
+    trEl.appendChild(tdEl);
+  }
+  cookiestands.appendChild(trEl);
+}
+makeTotalsRows();
