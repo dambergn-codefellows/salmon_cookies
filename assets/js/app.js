@@ -78,7 +78,7 @@ var seaTacAirport = {
     for(var i = 0; i < hours.length; i++) {
       this.randCustByHour.push(Math.floor(Math.random() * (this.maxCustPerHour - this.minCustPerHour + 1)) + this.minCustPerHour);
       console.log(this.randCustByHour[i]);
-
+id="cookiestands"
     }
   },
 //method for cookies sold by hours
