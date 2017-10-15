@@ -50,7 +50,7 @@ function MakeLocation(name, minCustPerHour, maxCustPerHour, avgCookieSoldPerHour
     }
     this.totalCookies.push(sum);
     //console.log('Total: ' + sum);
-makeShopRows();
+
   }
 
 
@@ -68,27 +68,73 @@ function makeHeaderRow(){
   cookiestands.appendChild(trEl);
 }
 makeHeaderRow();
-function makeShopRows() {
+
+function makeFirstAndPikeRows() {
   var cookiestands = document.getElementById('cookiestands');
   var trEl = document.createElement('tr'); //creates table div.
   //console.log('Before trEl', trEl);
-  trEl.textContent = MakeLocation.name;
+  trEl.textContent = firstAndPikeData.name;
   for(var i = 0; i < hours.length; i++){
     var tdEl = document.createElement('td'); //creates top table row.
-    tdEl.textContent = MakeLocation.cookiesSoldByHour[i];
+    tdEl.textContent = firstAndPikeData.cookiesSoldByHour[i];
     trEl.appendChild(tdEl);
   }
   cookiestands.appendChild(trEl);
 }
+makeFirstAndPikeRows();
 
+function makeSeaTacAirportRows() {
+  var cookiestands = document.getElementById('cookiestands');
+  var trEl = document.createElement('tr'); //creates table div.
+  //console.log('Before trEl', trEl);
+  trEl.textContent = seaTacAirportData.name;
+  for(var i = 0; i < hours.length; i++){
+    var tdEl = document.createElement('td'); //creates top table row.
+    tdEl.textContent = seaTacAirportData.cookiesSoldByHour[i];
+    trEl.appendChild(tdEl);
+  }
+  cookiestands.appendChild(trEl);
+}
+makeSeaTacAirportRows();
 
-//consider a for loop for the hours
-//create a th element
-//give the th element some text content like hours[i];
-//appendChild
+function makeSeattleCenterDataRows() {
+  var cookiestands = document.getElementById('cookiestands');
+  var trEl = document.createElement('tr'); //creates table div.
+  //console.log('Before trEl', trEl);
+  trEl.textContent = seattleCenterData.name;
+  for(var i = 0; i < hours.length; i++){
+    var tdEl = document.createElement('td'); //creates top table row.
+    tdEl.textContent = seattleCenterData.cookiesSoldByHour[i];
+    trEl.appendChild(tdEl);
+  }
+  cookiestands.appendChild(trEl);
+}
+makeSeattleCenterDataRows();
 
-//create a th elemnet
-//give the th element text content
-//append child
+function makeCapitolHillRows() {
+  var cookiestands = document.getElementById('cookiestands');
+  var trEl = document.createElement('tr'); //creates table div.
+  //console.log('Before trEl', trEl);
+  trEl.textContent = capitolHillData.name;
+  for(var i = 0; i < hours.length; i++){
+    var tdEl = document.createElement('td'); //creates top table row.
+    tdEl.textContent = capitolHillData.cookiesSoldByHour[i];
+    trEl.appendChild(tdEl);
+  }
+  cookiestands.appendChild(trEl);
+}
+makeCapitolHillRows();
 
-//remember to  call makeHeaderRow();
+function makeAlkiRows() {
+  var cookiestands = document.getElementById('cookiestands');
+  var trEl = document.createElement('tr'); //creates table div.
+  //console.log('Before trEl', trEl);
+  trEl.textContent = alkiData.name;
+  for(var i = 0; i < hours.length; i++){
+    var tdEl = document.createElement('td'); //creates top table row.
+    tdEl.textContent = alkiData.cookiesSoldByHour[i];
+    trEl.appendChild(tdEl);
+  }
+  cookiestands.appendChild(trEl);
+}
+makeAlkiRows();
