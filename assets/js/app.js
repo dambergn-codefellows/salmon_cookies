@@ -63,6 +63,7 @@ function MakeLocation(name, minCustPerHour, maxCustPerHour, avgCookieSoldPerHour
   }
   tdEl.textContent = this.totalCookiesByLocation;
   cookiestands.appendChild(trEl);
+  
 }
 
 function makeHeaderRow(){
@@ -102,17 +103,24 @@ makeTotalsRows();
  // }
  //makeTotalsRows();
 
- var newStoreForm = document.getElementById('store-form');
- console.log(newStoreForm);
- var newStore = [];
+ // var newStoreName = document.getElementById('storeName');
+ // var newStoreMin = document.getElementById('minCust');
+ // var newStoreMax = document.getElementById('maxCust');
+ // var newStoreAvgCook = document.getElementById('avgCook');
+ //
+ // function submitNewLocation(event) {
+ //   event.preventDefault(); //gotta have it. prevents page reload
+ //
+ //   new MakeLocation(newStoreName, newStoreMin, newStoreMax, newStoreAvgCook);
+ // };
 
- function submitNewLocation(event) {
+ document.getElementById('btn').addEventListener('click', function(){
+   var newStoreName = document.getElementById('storeName').value;
+   var newStoreMin = document.getElementById('minCust').value;
+   var newStoreMax = document.getElementById('maxCust').value;
+   var newStoreAvgCook = document.getElementById('avgCook').value;
 
-   console.log(event);
    event.preventDefault(); //gotta have it. prevents page reload
 
-   newStore.push(newStoreForm);
-   new MakeLocation(newStore);
- };
-
- newStoreForm.addEventListener('submit', submitNewLocation);
+   new MakeLocation(newStoreName, newStoreMin, newStoreMax, newStoreAvgCook);
+ });
