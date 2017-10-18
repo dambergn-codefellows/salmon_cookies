@@ -10,7 +10,7 @@ var allLocations = [];
 //console.log(allLocations);
 //we need to define a varaiable that will be dynamic depending on how many cookies
 var cookiesSoldByHour = [];
-console.log(cookiesSoldByHour);
+//console.log(cookiesSoldByHour);
 //total of total cookies
 var netTotal = 0;
 makeHeaderRow();
@@ -102,15 +102,17 @@ makeTotalsRows();
  // }
  //makeTotalsRows();
 
-var storeform = document.getElementById('store-form');
-submitNewLocation  = function(storename, mincust, maxcust, avgcook) {
-   this.storename = storename;
-   this.mincust = mincust;
-   this.maxcust = maxcust;
-   this.avgcook = avgcook;
- };
+ var newStoreForm = document.getElementById('store-form');
+ console.log(newStoreForm);
+ var newStore = [];
+
  function submitNewLocation(event) {
+
    console.log(event);
    event.preventDefault(); //gotta have it. prevents page reload
+
+   newStore.push(newStoreForm);
+   new MakeLocation(newStore);
  };
- storeform.addEventListener('submit', submitNewLocation);
+
+ newStoreForm.addEventListener('submit', submitNewLocation);
