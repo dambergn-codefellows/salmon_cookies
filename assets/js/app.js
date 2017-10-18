@@ -20,6 +20,7 @@ new MakeLocation('Seattle Center', 11, 38, 3.7);
 new MakeLocation('Capitol Hill', 20, 38, 2.3);
 new MakeLocation('Alki', 2, 16, 4.6);
 
+
 //constructor functions begin with an Uppercase letter
 function MakeLocation(name, minCustPerHour, maxCustPerHour, avgCookieSoldPerHour){
   var sumByLocation = 0;
@@ -76,7 +77,7 @@ function makeHeaderRow(){
   thEl.textContent = 'Total';
   cookiestands.appendChild(trEl);
 }
-debugger;
+//debugger;
 function makeTotalsRows() {
 
  for(var j = 0; j < hours.lenght; j++){
@@ -100,3 +101,16 @@ makeTotalsRows();
  //   cookiestands.appendChild(trEl);
  // }
  //makeTotalsRows();
+
+var storeform = document.getElementById('store-form');
+submitNewLocation  = function(storename, mincust, maxcust, avgcook) {
+   this.storename = storename;
+   this.mincust = mincust;
+   this.maxcust = maxcust;
+   this.avgcook = avgcook;
+ };
+ function submitNewLocation(event) {
+   console.log(event);
+   event.preventDefault(); //gotta have it. prevents page reload
+ };
+ storeform.addEventListener('submit', submitNewLocation);

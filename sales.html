@@ -5,27 +5,24 @@
     <title>Salmon Cookies Sales</title>
   </head>
   <body>
-    <h1>Salmon Cookies Sales</h1>
-    <div>
-      <h3 id="firstandpikeh3"></h3>
-      <ul id="firstandpikeul"></ul>
-    </div>
-    <div>
-      <h3 id="seatacairporth3"></h3>
-      <ul id="seatacairportul"></ul>
-    </div>
-    <div>
-      <h3 id="seattlecenterh3"></h3>
-      <ul id="seattlecenterul"></ul>
-    </div>
-    <div>
-      <h3 id="capitolhillh3"></h3>
-      <ul id="capitolhillul"></ul>
-    </div>
-    <div>
-      <h3 id="alkih3"></h3>
-      <ul id="alkiul"></ul>
-    </div>
+    <form id="store-form">
+      <fieldset>
+        <legend>Add Store Location</legend>
+        <label for="storename">Name of Location: </label>
+        <input name="storename" type="text" />
+        </br>
+        <label for="mincust">Minimum Customers per Hour: </label>
+        <input name="mincust" type="text" />
+        </br>
+        <label for="maxcust">Maximum Customers per Hour: </label>
+        <input name="maxcust" type="text"/>
+        </br>
+        <label for="avgcook">Average Cookies per Sale: </label>
+        <input name="avgcook" type="text"/>
+        </br>
+        <button type="submit">Create a new store</button>
+      </fieldset>
+    </form>
 
     <div>
       <table id="cookiestands">
