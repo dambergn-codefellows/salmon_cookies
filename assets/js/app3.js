@@ -8,7 +8,7 @@ var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '
 
 //we need to create a place for our list of all locations to be placed when we create them.
 var allLocations = [];
-//console.log(allLocations);
+console.log(allLocations);
 //we need to define a varaiable that will be dynamic depending on how many cookies
 var totalCookiesByHour = [];
 //console.log(totalCookiesByHour);
@@ -16,14 +16,13 @@ var totalCookiesByLocation = [];
 //console.log(totalCookiesByLocation);
 //total of total cookies
 var netTotal = 0;
+makeHeaderRow();
+new MakeLocation('First and Pike', 23, 65, 6.3);
+new MakeLocation('SeaTack Airport', 3, 24, 1.2);
+new MakeLocation('Seattle Center', 11, 38, 3.7);
+new MakeLocation('Capitol Hill', 20, 38, 2.3);
+new MakeLocation('Alki', 2, 16, 4.6);
 
-var firstAndPikeData = new MakeLocation('First and Pike', 23, 65, 6.3);
-var seaTacAirportData = new MakeLocation('SeaTack Airport', 3, 24, 1.2);
-var seattleCenterData = new MakeLocation('Seattle Center', 11, 38, 3.7);
-var capitolHillData = new MakeLocation('Capitol Hill', 20, 38, 2.3);
-var alkiData = new MakeLocation('Alki', 2, 16, 4.6);
-var storesData = [firstAndPikeData, seaTacAirportData,seattleCenterData, capitolHillData, alkiData];
-console.log(storesData);
 
 //constructor functions begin with an Uppercase letter
 function MakeLocation(name, minCustPerHour, maxCustPerHour, avgCookieSoldPerHour){
@@ -64,8 +63,18 @@ function MakeLocation(name, minCustPerHour, maxCustPerHour, avgCookieSoldPerHour
     sumByHour += (this.randCustByHour[m] + this.cookiesSoldByHour[m]);
   }
   this.totalCookiesByHour.push(sumByHour);
+  var cookiestands = document.getElementById('cookiestands');
+  var trEl = document.createElement('tr'); //creates table div.
+  //console.log('Before trEl', trEl);
+  trEl.textContent = this.name;
+  for(var i = 0; i <= hours.length; i++){
+    var tdEl = document.createElement('td'); //creates top table row.
+    tdEl.textContent = this.cookiesSoldByHour[i];
+    trEl.appendChild(tdEl);
+  }
+  tdEl.textContent = this.totalCookiesByLocation;
+  cookiestands.appendChild(trEl);
 }
-
 
 function makeHeaderRow(){
   var cookiestands = document.getElementById('cookiestands');
@@ -73,7 +82,7 @@ function makeHeaderRow(){
   var trEl = document.createElement('tr'); //creates table div.
   //console.log('Before trEl', trEl);
   trEl.textContent = 'Shop Location';
-  for(var i = 0; i < hours.length; i++){
+  for(var i = 0; i <= hours.length; i++){
     var thEl = document.createElement('th'); //creates top table row.
     thEl.textContent = hours[i];
     trEl.appendChild(thEl);
@@ -81,100 +90,6 @@ function makeHeaderRow(){
   thEl.textContent = 'Total';
   cookiestands.appendChild(trEl);
 }
-makeHeaderRow();
-
-function makeRows() {
-  var cookiestands = document.getElementById('cookiestands');
-  var trEl = document.createElement('tr'); //creates table div.
-  //console.log('Before trEl', trEl);
-  trEl.textContent = storesData[j].name;
-  for(var i = 0; i < hours.length; i++){
-    var tdEl = document.createElement('td'); //creates top table row.
-    tdEl.textContent = storesData[j].cookiesSoldByHour[i];
-    trEl.appendChild(tdEl);
-  }
-  tdEl.textContent = totalCookiesByLocation[j];
-  cookiestands.appendChild(trEl);
-}
-
-for (var j = 0; j <= storesData.length; j++) {
-  makeRows(j);
-}
-
-// function makeFirstAndPikeRows() {
-//   var cookiestands = document.getElementById('cookiestands');
-//   var trEl = document.createElement('tr'); //creates table div.
-//   //console.log('Before trEl', trEl);
-//   trEl.textContent = firstAndPikeData.name;
-//   for(var i = 0; i < hours.length; i++){
-//     var tdEl = document.createElement('td'); //creates top table row.
-//     tdEl.textContent = firstAndPikeData.cookiesSoldByHour[i];
-//     trEl.appendChild(tdEl);
-//   }
-//   tdEl.textContent = totalCookiesByLocation[0];
-//   cookiestands.appendChild(trEl);
-// }
-// makeFirstAndPikeRows();
-//
-// function makeSeaTacAirportRows() {
-//   var cookiestands = document.getElementById('cookiestands');
-//   var trEl = document.createElement('tr'); //creates table div.
-//   //console.log('Before trEl', trEl);
-//   trEl.textContent = seaTacAirportData.name;
-//   for(var i = 0; i < hours.length; i++){
-//     var tdEl = document.createElement('td'); //creates top table row.
-//     tdEl.textContent = seaTacAirportData.cookiesSoldByHour[i];
-//     trEl.appendChild(tdEl);
-//   }
-//   tdEl.textContent = totalCookiesByLocation[1];
-//   cookiestands.appendChild(trEl);
-// }
-// makeSeaTacAirportRows();
-//
-// function makeSeattleCenterDataRows() {
-//   var cookiestands = document.getElementById('cookiestands');
-//   var trEl = document.createElement('tr'); //creates table div.
-//   //console.log('Before trEl', trEl);
-//   trEl.textContent = seattleCenterData.name;
-//   for(var i = 0; i < hours.length; i++){
-//     var tdEl = document.createElement('td'); //creates top table row.
-//     tdEl.textContent = seattleCenterData.cookiesSoldByHour[i];
-//     trEl.appendChild(tdEl);
-//   }
-//   tdEl.textContent = totalCookiesByLocation[2];
-//   cookiestands.appendChild(trEl);
-// }
-// makeSeattleCenterDataRows();
-//
-// function makeCapitolHillRows() {
-//   var cookiestands = document.getElementById('cookiestands');
-//   var trEl = document.createElement('tr'); //creates table div.
-//   //console.log('Before trEl', trEl);
-//   trEl.textContent = capitolHillData.name;
-//   for(var i = 0; i < hours.length; i++){
-//     var tdEl = document.createElement('td'); //creates top table row.
-//     tdEl.textContent = capitolHillData.cookiesSoldByHour[i];
-//     trEl.appendChild(tdEl);
-//   }
-//   tdEl.textContent = totalCookiesByLocation[3];
-//   cookiestands.appendChild(trEl);
-// }
-// makeCapitolHillRows();
-//
-// function makeAlkiRows() {
-//   var cookiestands = document.getElementById('cookiestands');
-//   var trEl = document.createElement('tr'); //creates table div.
-//   //console.log('Before trEl', trEl);
-//   trEl.textContent = alkiData.name;
-//   for(var i = 0; i < hours.length; i++){
-//     var tdEl = document.createElement('td'); //creates top table row.
-//     tdEl.textContent = alkiData.cookiesSoldByHour[i];
-//     trEl.appendChild(tdEl);
-//   }
-//   tdEl.textContent = totalCookiesByLocation[4];
-//   cookiestands.appendChild(trEl);
-// }
-// makeAlkiRows();
 
  function makeTotalsRows() {
    var cookiestands = document.getElementById('cookiestands');
