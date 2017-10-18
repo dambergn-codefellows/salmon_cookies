@@ -1,5 +1,4 @@
 'use strict';
-//debugger;
 //constructors! think of it like a specialized machine in a factory that creates new objects.
 //prototypes are the functionality that the machine adds to the objects
 
