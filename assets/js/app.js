@@ -102,17 +102,13 @@ makeTotalsRows();
  // }
  //makeTotalsRows();
 
- var newStoreForm = document.getElementById('store-form');
- console.log(newStoreForm);
- var newStore = [];
+document.getElementById('createNewStore').addEventListener('click', function() {
+  var newStoreName = document.getElementById('storename').value;
+  var newStoreMin = document.getElementById('mincust').value;
+  var newStoreMax = document.getElementById('maxcust').value;
+  var newStoreAvg = document.getElementById('avgcook').value;
 
- function submitNewLocation(event) {
+  event.preventDefault(); //gotta have it. prevents page reload
 
-   console.log(event);
-   event.preventDefault(); //gotta have it. prevents page reload
-
-   newStore.push(newStoreForm);
-   new MakeLocation(newStore);
- };
-
- newStoreForm.addEventListener('submit', submitNewLocation);
+  new MakeLocation(newStoreName, newStoreMin, newStoreMax, newStoreAvg);
+});
