@@ -47,14 +47,6 @@ function MakeLocation(name, minCustPerHour, maxCustPerHour, avgCookieSoldPerHour
     sumByLocation += (this.cookiesSoldByHour[j]);//metohd for Calculating Total
   }
   this.totalCookiesByLocation.push(sumByLocation);
-
-  //console.log('Total: ' + sumByLocation);
-
-  // for(var m = 0; m < allLocations.length; m++) {
-  //   sumByHour += (this.cookiesSoldByHour[m]);
-  // }
-  // this.totalCookiesByHour.push(sumByHour);
-
   var cookiestands = document.getElementById('cookiestands');
   var trEl = document.createElement('tr'); //creates table div.
   //console.log('Before trEl', trEl);
@@ -80,7 +72,6 @@ function makeHeaderRow(){
   thEl.textContent = 'Total';
   cookiestands.appendChild(trEl);
 }
-//debugger;
 
 function makeTotalsRow() {
   cookiesByHourTotal.length = 0;//clears contents of array so it can updated when new locations are created.
@@ -88,6 +79,7 @@ function makeTotalsRow() {
   var trEl = document.createElement('tr'); //creates table div.
   trEl.setAttribute("id","total");// gives created row an ID.
   trEl.textContent = 'Total';
+  var total = 0;
   for(var j = 0; j < hours.length; j++){
     var byHour = 0;
     var tdEl = document.createElement('td'); //creates top table row.
@@ -100,9 +92,15 @@ function makeTotalsRow() {
     cookiestands.appendChild(trEl);
   }
   cookiestands.appendChild(trEl);
-};
-
-
+  for(var i = 0; i < hours.length; i++) {
+    total += (cookiesByHourTotal[i]);
+  }
+  var tdEl = document.createElement('td');
+  tdEl.textContent = (total);
+  trEl.appendChild(tdEl);
+  cookiestands.appendChild(trEl);
+  console.log('total: ' + total);
+}
 
 document.getElementById('createNewStore').addEventListener('click', function() {
   var elem = document.getElementById("total");//part one of deleting the total row
