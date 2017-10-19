@@ -35,3 +35,52 @@ h1{
 }
 
 #hideframe{display: none;}
+
+input[type=text] {
+    width: 250px;
+    padding: 6px 0px;
+    margin: 1px;
+    box-sizing: border-box;
+    border: 2px solid salmon;
+    border-radius: 8px;
+    background-color: lightblue;
+    background-image: url('../img/frosted-cookie-40px.jpg');
+    background-position: 0px 0px;
+    background-repeat: no-repeat;
+    padding-left: 63px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+    width: 75%;
+}
+
+form {
+  width: 100%;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table, th, td, tr{
+  border:solid black 1px;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+
+  /*margin: 0 auto;*/
+}
+
+table {
+  width: 100%;
+  max-width: 1000px;
+}
+
+td:hover {
+  background-color: lightblue;
+}
+
+tr:last-child{
+
+}
