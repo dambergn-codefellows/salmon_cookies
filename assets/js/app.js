@@ -10,7 +10,9 @@ var allLocations = [];
 //console.log(allLocations);
 //we need to define a varaiable that will be dynamic depending on how many cookies
 var cookiesSoldByHour = [];
-//console.log(cookiesSoldByHour);
+console.log(cookiesSoldByHour);
+var cookiesByHourTotal = [];
+console.log(cookiesByHourTotal);
 //total of total cookies
 var netTotal = 0;
 makeHeaderRow();
@@ -19,12 +21,12 @@ new MakeLocation('SeaTack Airport', 3, 24, 1.2);
 new MakeLocation('Seattle Center', 11, 38, 3.7);
 new MakeLocation('Capitol Hill', 20, 38, 2.3);
 new MakeLocation('Alki', 2, 16, 4.6);
-
+makeTotalsRows();
 
 //constructor functions begin with an Uppercase letter
 function MakeLocation(name, minCustPerHour, maxCustPerHour, avgCookieSoldPerHour){
   var sumByLocation = 0;
-  //var sumByHour = 0;
+  var sumByHour = 0;
   this.name = name;
   this.minCustPerHour = minCustPerHour;
   this.maxCustPerHour = maxCustPerHour;
@@ -43,8 +45,12 @@ function MakeLocation(name, minCustPerHour, maxCustPerHour, avgCookieSoldPerHour
   for(var j = 0; j < hours.length; j++) {
     this.cookiesSoldByHour.push(Math.round(this.avgCookieSoldPerHour * this.randCustByHour[j]));
     sumByLocation += (this.cookiesSoldByHour[j]);//metohd for Calculating Total
+    for(var k = 0; k < allLocations.length; k++){ //adds the totals for each location per hour.
+      sumByHour += (cookiesSoldByHour[k][j]);
+    }
   }
   this.totalCookiesByLocation.push(sumByLocation);
+
   //console.log('Total: ' + sumByLocation);
 
   // for(var m = 0; m < allLocations.length; m++) {
@@ -78,18 +84,19 @@ function makeHeaderRow(){
   cookiestands.appendChild(trEl);
 }
 //debugger;
+
 function makeTotalsRows() {
+  for(var j = 0; j < hours.length; j++){ //runs through each set of hours
+    var total = 0;
+    for(var k = 0; k < allLocations.length; k++){ //adds the totals for each location per hour.
+      total += (cookiesSoldByHour[k][j]);
 
- for(var j = 0; j < hours.lenght; j++){
-  var total = 0;
-
-  for(var k = 0; k < allLocations.length; k++){
-    total += (cookiesSoldByHour[k][j])
-    return total;
+      return total;
+    }
+    cookiesByHourTotal.push(total);
   }
- }
 }
-makeTotalsRows();
+
  //   var cookiestands = document.getElementById('cookiestands');
  //   var trEl = document.createElement('tr'); //creates table div.
  //   trEl.textContent = 'Total';
