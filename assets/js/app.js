@@ -10,7 +10,8 @@ var allLocations = [];
 //console.log(allLocations);
 //we need to define a varaiable that will be dynamic depending on how many cookies
 var cookiesSoldByHour = [];
-console.log(cookiesSoldByHour);
+//console.log(cookiesSoldByHour);
+var cookiesByHourTotal = [];
 //total of total cookies
 var netTotal = 0;
 makeHeaderRow();
@@ -19,6 +20,7 @@ new MakeLocation('SeaTack Airport', 3, 24, 1.2);
 new MakeLocation('Seattle Center', 11, 38, 3.7);
 new MakeLocation('Capitol Hill', 20, 38, 2.3);
 new MakeLocation('Alki', 2, 16, 4.6);
+makeTotalsRow();
 
 //constructor functions begin with an Uppercase letter
 function MakeLocation(name, minCustPerHour, maxCustPerHour, avgCookieSoldPerHour){
@@ -44,13 +46,6 @@ function MakeLocation(name, minCustPerHour, maxCustPerHour, avgCookieSoldPerHour
     sumByLocation += (this.cookiesSoldByHour[j]);//metohd for Calculating Total
   }
   this.totalCookiesByLocation.push(sumByLocation);
-  //console.log('Total: ' + sumByLocation);
-
-  // for(var m = 0; m < allLocations.length; m++) {
-  //   sumByHour += (this.cookiesSoldByHour[m]);
-  // }
-  // this.totalCookiesByHour.push(sumByHour);
-
   var cookiestands = document.getElementById('cookiestands');
   var trEl = document.createElement('tr'); //creates table div.
   //console.log('Before trEl', trEl);
@@ -76,27 +71,31 @@ function makeHeaderRow(){
   thEl.textContent = 'Total';
   cookiestands.appendChild(trEl);
 }
-debugger;
-function makeTotalsRows() {
 
- for(var j = 0; j < hours.lenght; j++){
+function makeTotalsRow() {
+  cookiesByHourTotal.length = 0;//clears contents of array so it can updated when new locations are created.
+  var cookiestands = document.getElementById('cookiestands');
+  var trEl = document.createElement('tr'); //creates table div.
+  trEl.setAttribute("id","total");// gives created row an ID.
+  trEl.textContent = 'Total';
   var total = 0;
-
-  for(var k = 0; k < allLocations.length; k++){
-    total += (cookiesSoldByHour[k][j])
-    return total;
+  for(var j = 0; j < hours.length; j++){
+    var byHour = 0;
+    var tdEl = document.createElement('td'); //creates top table row.
+    for(var p = 0; p < allLocations.length; p++){
+      byHour += (cookiesSoldByHour[p][j]);
+    }
+    cookiesByHourTotal.push(byHour);
+    tdEl.textContent = (cookiesByHourTotal[j]);
+    trEl.appendChild(tdEl);
+    cookiestands.appendChild(trEl);
   }
- }
+  cookiestands.appendChild(trEl);
+  for(var i = 0; i < hours.length; i++) {
+    total += (cookiesByHourTotal[i]);
+  }
+  var tdEl = document.createElement('td');
+  tdEl.textContent = (total);
+  trEl.appendChild(tdEl);
+  cookiestands.appendChild(trEl);
 }
-makeTotalsRows();
- //   var cookiestands = document.getElementById('cookiestands');
- //   var trEl = document.createElement('tr'); //creates table div.
- //   trEl.textContent = 'Total';
- //   for(var i = 0; i < hours.length; i++){
- //     var tdEl = document.createElement('td'); //creates top table row.
- //      tdEl.textContent = (cookiesSoldByHour[i]);
- //      trEl.appendChild(tdEl);
- //    }
- //   cookiestands.appendChild(trEl);
- // }
- //makeTotalsRows();
