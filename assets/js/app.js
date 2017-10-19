@@ -21,7 +21,7 @@ new MakeLocation('SeaTack Airport', 3, 24, 1.2);
 new MakeLocation('Seattle Center', 11, 38, 3.7);
 new MakeLocation('Capitol Hill', 20, 38, 2.3);
 new MakeLocation('Alki', 2, 16, 4.6);
-makeTotalsRows();
+
 
 //constructor functions begin with an Uppercase letter
 function MakeLocation(name, minCustPerHour, maxCustPerHour, avgCookieSoldPerHour){
@@ -45,9 +45,6 @@ function MakeLocation(name, minCustPerHour, maxCustPerHour, avgCookieSoldPerHour
   for(var j = 0; j < hours.length; j++) {
     this.cookiesSoldByHour.push(Math.round(this.avgCookieSoldPerHour * this.randCustByHour[j]));
     sumByLocation += (this.cookiesSoldByHour[j]);//metohd for Calculating Total
-    for(var k = 0; k < allLocations.length; k++){ //adds the totals for each location per hour.
-      sumByHour += (cookiesSoldByHour[k][j]);
-    }
   }
   this.totalCookiesByLocation.push(sumByLocation);
 
@@ -85,29 +82,24 @@ function makeHeaderRow(){
 }
 //debugger;
 
-function makeTotalsRows() {
-  for(var j = 0; j < hours.length; j++){ //runs through each set of hours
-    var total = 0;
-    for(var k = 0; k < allLocations.length; k++){ //adds the totals for each location per hour.
-      total += (cookiesSoldByHour[k][j]);
-
-      return total;
+function makeTotalsRow() {
+  var cookiestands = document.getElementById('cookiestands');
+  var trEl = document.createElement('tr'); //creates table div.
+  trEl.textContent = 'Total';
+  for(var j = 0; j < hours.length; j++){
+    var test3 = 0;
+    var tdEl = document.createElement('td'); //creates top table row.
+    tdEl.textContent = (cookiesByHourTotal[j]);
+    trEl.appendChild(tdEl);
+    for(var p = 0; p < allLocations.length; p++){
+      test3 += (cookiesSoldByHour[p][j]);
     }
-    cookiesByHourTotal.push(total);
+    cookiesByHourTotal.push(test3);
+    //console.log(test3);
+    cookiestands.appendChild(trEl);
   }
 }
-
- //   var cookiestands = document.getElementById('cookiestands');
- //   var trEl = document.createElement('tr'); //creates table div.
- //   trEl.textContent = 'Total';
- //   for(var i = 0; i < hours.length; i++){
- //     var tdEl = document.createElement('td'); //creates top table row.
- //      tdEl.textContent = (cookiesSoldByHour[i]);
- //      trEl.appendChild(tdEl);
- //    }
- //   cookiestands.appendChild(trEl);
- // }
- //makeTotalsRows();
+makeTotalsRow();
 
 document.getElementById('createNewStore').addEventListener('click', function() {
   var newStoreName = document.getElementById('storename').value;
