@@ -21,7 +21,7 @@ new MakeLocation('SeaTack Airport', 3, 24, 1.2);
 new MakeLocation('Seattle Center', 11, 38, 3.7);
 new MakeLocation('Capitol Hill', 20, 38, 2.3);
 new MakeLocation('Alki', 2, 16, 4.6);
-
+makeTotalsRow();
 
 //constructor functions begin with an Uppercase letter
 function MakeLocation(name, minCustPerHour, maxCustPerHour, avgCookieSoldPerHour){
@@ -83,31 +83,39 @@ function makeHeaderRow(){
 //debugger;
 
 function makeTotalsRow() {
+  cookiesByHourTotal.length = 0;//clears contents of array so it can updated when new locations are created.
   var cookiestands = document.getElementById('cookiestands');
   var trEl = document.createElement('tr'); //creates table div.
+  trEl.setAttribute("id","total");// gives created row an ID.
   trEl.textContent = 'Total';
   for(var j = 0; j < hours.length; j++){
-    var test3 = 0;
+    var byHour = 0;
     var tdEl = document.createElement('td'); //creates top table row.
+    for(var p = 0; p < allLocations.length; p++){
+      byHour += (cookiesSoldByHour[p][j]);
+    }
+    cookiesByHourTotal.push(byHour);
     tdEl.textContent = (cookiesByHourTotal[j]);
     trEl.appendChild(tdEl);
-    for(var p = 0; p < allLocations.length; p++){
-      test3 += (cookiesSoldByHour[p][j]);
-    }
-    cookiesByHourTotal.push(test3);
-    //console.log(test3);
     cookiestands.appendChild(trEl);
   }
-}
-makeTotalsRow();
+  cookiestands.appendChild(trEl);
+};
+
+
 
 document.getElementById('createNewStore').addEventListener('click', function() {
+  var elem = document.getElementById("total");//part one of deleting the total row
+  elem.parentElement.removeChild(elem);//part Two of deleting the total row
+
   var newStoreName = document.getElementById('storename').value;
   var newStoreMin = document.getElementById('mincust').value;
   var newStoreMax = document.getElementById('maxcust').value;
   var newStoreAvg = document.getElementById('avgcook').value;
 
   event.preventDefault(); //gotta have it. prevents page reload
-
   new MakeLocation(newStoreName, newStoreMin, newStoreMax, newStoreAvg);
+
+  event.preventDefault(); //gotta have it. prevents page reload
+  makeTotalsRow();//re creates the total row after the new location is added
 });
