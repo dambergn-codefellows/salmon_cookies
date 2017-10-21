@@ -10,22 +10,28 @@
   text-shadow: 2px 2px #99ccff;
 }
 
-p{
-    font-family: tengwar_cursive;
-    font-size: 42px;
-}
-#wrapperHeader{
-    position: relative;
-    background-image:url(../img/salmon.png);
-}
-
+/*Header*/
 #header{
-    background:url(../img/salmon.png) no-repeat;
-    width:100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 150px;
+  height: 100%; /* Full height */
+  position: fixed; /* Make it stick, even on scroll */
+  overflow: auto; /* Enable scrolling if the sidenav has too much content */
 }
 
-button{
-  background-color: salmon;
+#header-p2{
+  background-image: url(../img/salmon.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 150px 0px 100px 0px;
+}
+
+#header-message{
+  text-align: center;
+  background: none;
+  font-size: 36px;
 }
 
 h1{
@@ -34,7 +40,41 @@ h1{
   float: center;
 }
 
+#content{
+  margin: 0;
+  padding: 150px;
+
+}
+
+/*Process content*/
+#paragraph1, #paragraph3{
+  clear: left;
+}
+
+#img01, #img03{
+  float: right;
+}
+
+#paragraph2, #paragraph4{
+  clear: right;
+}
+
+#img02, #img04{
+  float: left;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/*Form Input*/
 #hideframe{display: none;}
+
+button{
+  background-color: salmon;
+}
 
 input[type=text] {
     width: 250px;
